@@ -1,0 +1,11 @@
+node_modules/
+dist/
+data/*.db
+data/*.json
+data/*.sqlite
+!data/.gitkeep
+.env
+.env.local
+*.log
+.DS_Store
+coverage/

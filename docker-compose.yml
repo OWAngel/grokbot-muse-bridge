@@ -1,0 +1,19 @@
+services:
+  bridge:
+    build: .
+    ports:
+      - "${PORT:-8787}:8787"
+    environment:
+      BRIDGE_TOKEN: ${BRIDGE_TOKEN:?set BRIDGE_TOKEN}
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://127.0.0.1:8787}
+      PORT: "8787"
+      STORE_BACKEND: ${STORE_BACKEND:-json}
+      GROKBOT_WEBHOOK_URL: ${GROKBOT_WEBHOOK_URL:-}
+      GROKBOT_WEBHOOK_KEY: ${GROKBOT_WEBHOOK_KEY:-}
+      MUSE_CLI_ENABLED: ${MUSE_CLI_ENABLED:-false}
+    volumes:
+      - bridge-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  bridge-data:
